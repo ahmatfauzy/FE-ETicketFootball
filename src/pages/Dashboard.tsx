@@ -1,51 +1,88 @@
-import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Calendar, Ticket } from "lucide-react";
+import { fetchAllMatches } from "../services/matchService";
+import { fetchAllTickets } from "../services/ticketService";
 
-export const Dashboard = () => {
+const Dashboard: React.FC = () => {
+  const [matchCount, setMatchCount] = useState<number>(0);
+  const [ticketCount, setTicketCount] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   useEffect(() => {
-    document.title = "Dashboard";
-  }, []);
-  const { user, setUser } = useAuth();
-  const navigate = useNavigate();
+    const loadData = async () => {
+      try {
+        const matchesResponse = await fetchAllMatches();
+        const ticketsResponse = await fetchAllTickets();
 
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    setUser(null);
-    navigate('/login');
-  };
+        setMatchCount(matchesResponse.data.length);
+        setTicketCount(ticketsResponse.length);
+      } catch (error) {
+        console.error("Failed to load dashboard data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-full">Loading...</div>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+    <div>
+      <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-white p-6 rounded-lg shadow">
+          <div className="flex items-center">
+            <div className="bg-blue-100 p-3 rounded-full">
+              <Calendar className="h-8 w-8 text-blue-600" />
+            </div>
+            <div className="ml-4">
+              <h2 className="text-sm font-medium text-gray-500">
+                Total Matches
+              </h2>
+              <p className="text-3xl font-bold">{matchCount}</p>
+            </div>
+          </div>
+          <div className="mt-4">
+            <a
+              href="/matches"
+              className="text-blue-600 hover:underline text-sm"
             >
-              Logout
-            </button>
+              View all matches →
+            </a>
           </div>
-          
-          <div className="bg-gray-50 p-4 rounded-md mb-6">
-            <h2 className="text-lg font-medium text-gray-900 mb-2">User Info</h2>
-            <p className="text-gray-600">
-              <strong>ID:</strong> {user?.id}
-            </p>
-            <p className="text-gray-600">
-              <strong>Email:</strong> {user?.email}
-            </p>
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow">
+          <div className="flex items-center">
+            <div className="bg-green-100 p-3 rounded-full">
+              <Ticket className="h-8 w-8 text-green-600" />
+            </div>
+            <div className="ml-4">
+              <h2 className="text-sm font-medium text-gray-500">
+                Total Tickets
+              </h2>
+              <p className="text-3xl font-bold">{ticketCount}</p>
+            </div>
           </div>
-          
-          <div className="border-t border-gray-200 pt-4">
-            <p className="text-gray-500">
-              This is a protected dashboard page. You're now logged in.
-            </p>
+          <div className="mt-4">
+            <a
+              href="/tickets"
+              className="text-green-600 hover:underline text-sm"
+            >
+              View all tickets →
+            </a>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+export default Dashboard;

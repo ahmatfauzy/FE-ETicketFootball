@@ -63,7 +63,7 @@ export const RegisterForm = () => {
             Where Every Seat Brings <br /> Unforgettable Moments.
           </p>
           <p className="text-sm max-w-md opacity-90">
-            Join our community of fans and experience the thrill of live
+            Join our community of fans and experience <br /> the thrill of live
             football.
           </p>
         </div>

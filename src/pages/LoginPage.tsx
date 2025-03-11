@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 export const LoginPage = () => {
   useEffect(() => {
-      document.title = "Login - ETicket Football Match";
+      document.title = "Login - FootieGate";
     }, []);
 
   return (
