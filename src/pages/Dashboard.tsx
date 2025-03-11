@@ -1,7 +1,11 @@
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
 
 export const Dashboard = () => {
+  useEffect(() => {
+    document.title = "Dashboard";
+  }, []);
   const { user, setUser } = useAuth();
   const navigate = useNavigate();
 
