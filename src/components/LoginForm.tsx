@@ -21,7 +21,14 @@ export const LoginForm = () => {
       const response = await authService.login(email, password);
       setUser(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
-      navigate("/dashboard");
+      
+      // Check if the email is admin@gmail.com
+      if (email === "admin@gmail.com") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/dashboard");
+      }
+      
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.response?.data?.error || "Login failed");

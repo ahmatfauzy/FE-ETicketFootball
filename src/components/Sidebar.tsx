@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext'; // Assuming you have an auth c
 const Sidebar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { setUser } = useAuth(); // Get setUser from auth context
+  const { setUser } = useAuth(); 
   
   const isActive = (path: string) => {
     return location.pathname.startsWith(path) ? 'bg-blue-700' : '';
@@ -23,7 +23,7 @@ const Sidebar: React.FC = () => {
       <div className="text-xl font-bold mb-8 p-2">Admin Dashboard</div>
       <nav className="space-y-2 flex-1">
         <Link 
-          to="/dashboard" 
+          to="/admin/dashboard" 
           className={`flex items-center p-3 rounded-lg hover:bg-blue-700 transition-colors ${isActive('/dashboard') || (location.pathname === '/' ? 'bg-blue-700' : '')}`}
         >
           <Home className="mr-3 h-5 w-5" />

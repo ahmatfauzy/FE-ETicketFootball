@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus, Edit, Trash2 } from 'lucide-react';
 import { fetchAllTickets, deleteTicket } from '../../services/ticketService';
+import Loading from "../../assets/loading.gif"
 
 interface Ticket {
   id: string;
@@ -58,7 +59,11 @@ const TicketList: React.FC = () => {
   };
 
   if (isLoading) {
-    return <div className="flex justify-center items-center h-full">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-full">
+        <img src={Loading} alt="Loading..." />
+      </div>
+    );
   }
 
   return (
