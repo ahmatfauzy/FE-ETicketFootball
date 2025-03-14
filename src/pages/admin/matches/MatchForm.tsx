@@ -4,7 +4,7 @@ import {
   createMatch,
   getMatchById,
   updateMatch,
-} from "../../services/matchService";
+} from "../../../services/matchService";
 
 interface MatchFormData {
   homeTeam: string;

@@ -3,6 +3,7 @@ import { authService } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../assets/images/bg_bola1.jpeg";
+import Popup from "../components/Popup"; // Impor komponen Popup
 
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -21,14 +22,13 @@ export const LoginForm = () => {
       const response = await authService.login(email, password);
       setUser(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
-      
-      // Check if the email is admin@gmail.com
-      if (email === "admin@gmail.com") {
+
+      if (email === import.meta.env.VITE_ADMIN_EMAIL) {
         navigate("/admin/dashboard");
       } else {
         navigate("/dashboard");
       }
-      
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.response?.data?.error || "Login failed");
@@ -39,6 +39,9 @@ export const LoginForm = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden">
+      {/* Popup akan muncul di sini */}
+      <Popup />
+
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -50,7 +53,7 @@ export const LoginForm = () => {
 
       <div className="relative h-full w-full flex items-center justify-center">
         <div className="flex w-full max-w-6xl mx-auto z-10">
-          {/* KIri - branding */}
+          {/* Kiri - branding */}
           <div className="hidden md:flex md:w-1/2 flex-col justify-center pl-8 text-white space-y-4">
             <div className="flex items-center space-x-2">
               <span className="text-xl font-semibold tracking-wider">
@@ -65,8 +68,8 @@ export const LoginForm = () => {
               Unforgettable Moments.
             </p>
             <p className="text-sm max-w-md opacity-90">
-              Join our community of fans and experience <br /> the thrill of live
-              football.
+              Join our community of fans and experience <br /> the thrill of
+              live football.
             </p>
           </div>
 
@@ -116,12 +119,6 @@ export const LoginForm = () => {
                     />
                   </div>
 
-                  {/* <div className="flex justify-end">
-                    <a href="/forgot-password" className="text-sm text-blue-700 hover:underline font-medium">
-                      Forgot password?
-                    </a>
-                  </div> */}
-
                   <button
                     type="submit"
                     disabled={loading}
@@ -129,8 +126,6 @@ export const LoginForm = () => {
                   >
                     {loading ? "Processing..." : "SIGN IN"}
                   </button>
-
-                  {/*  */}
 
                   <div className="text-center mt-4">
                     <p className="text-gray-800 text-sm">

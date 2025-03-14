@@ -4,8 +4,8 @@ import {
   createTicket,
   getTicketById,
   updateTicket,
-} from "../../services/ticketService";
-import { fetchAllMatches } from "../../services/matchService";
+} from "../../../services/ticketService";
+import { fetchAllMatches } from "../../../services/matchService";
 
 interface Match {
   id: string;

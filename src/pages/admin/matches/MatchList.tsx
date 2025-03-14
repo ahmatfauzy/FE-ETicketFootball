@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Plus, Edit, Trash2 } from "lucide-react";
-import { fetchAllMatches, deleteMatch } from "../../services/matchService";
+import { fetchAllMatches, deleteMatch } from "../../../services/matchService";
 import { format } from "date-fns";
-import Loading from "../../assets/loading.gif";
+import Loading from "../../../assets/loading.gif";
 
 interface Match {
   id: string;

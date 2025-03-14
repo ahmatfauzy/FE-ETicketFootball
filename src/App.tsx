@@ -10,14 +10,21 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { LoginPage } from "./pages/LoginPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
-// Import dashboard components
+// dashboard admin
 import Sidebar from "./components/Sidebar";
-import Dashboard from "./pages/Dashboard";
+// import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/admin/Dashboard";
-import MatchList from "./pages/matches/MatchList";
-import MatchForm from "./pages/matches/MatchForm";
-import TicketList from "./pages/tickets/TicketList";
-import TicketForm from "./pages/tickets/TicketForm";
+import MatchList from "./pages/admin/matches/MatchList";
+import MatchForm from "./pages/admin/matches/MatchForm";
+import TicketList from "./pages/admin/tickets/TicketList";
+import TicketForm from "./pages/admin/tickets/TicketForm";
+
+// user
+import HomePage from "./pages/HomePage";
+import MatchListPage from "./pages/MatchListPage";
+import MyTicketsPage from "./pages/MyTicketsPage";
+import UserTicketForm from "./pages/TicketForm";
+// import MyTicketsPage from "./pages/MyTicketsPage";
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -44,11 +51,12 @@ function App() {
             path="/dashboard"
             element={
               <ProtectedRoute>
-                  <Dashboard />
+                {/* <Dashboard /> */}
+                <HomePage />
               </ProtectedRoute>
             }
           />
-          
+
           {/* Admin Dashboard Route */}
           <Route
             path="/admin/dashboard"
@@ -121,6 +129,30 @@ function App() {
                 <DashboardLayout>
                   <TicketForm />
                 </DashboardLayout>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="/homepage" element={<HomePage />} />
+
+          <Route path="/matches/user" element={<MatchListPage />} />
+
+          <Route
+            path="/my-tickets/"
+            element={
+              <ProtectedRoute>
+                <MyTicketsPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/tickets/user/add"
+            element={
+              <ProtectedRoute>
+                {/* <DashboardLayout> */}
+                <UserTicketForm />
+                {/* </DashboardLayout> */}
               </ProtectedRoute>
             }
           />

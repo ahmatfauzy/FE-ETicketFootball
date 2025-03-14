@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Calendar, Ticket } from "lucide-react";
 import { fetchAllMatches } from "../../services/matchService";
 import { fetchAllTickets } from "../../services/ticketService";
-import Loading from "../../assets/loading.gif"
+import Loading from "../../assets/loading.gif";
 
 const Dashboard: React.FC = () => {
   useEffect(() => {
     document.title = "Dashboard - FootieGate";
   }, []);
-  
+
   const [matchCount, setMatchCount] = useState<number>(0);
   const [ticketCount, setTicketCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
