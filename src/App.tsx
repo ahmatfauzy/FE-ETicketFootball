@@ -46,7 +46,6 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
 
-          {/* Protected Dashboard Routes */}
           <Route
             path="/dashboard"
             element={

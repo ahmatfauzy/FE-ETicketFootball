@@ -3,7 +3,7 @@ import { authService } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../assets/images/bg_bola1.jpeg";
-import Popup from "../components/Popup"; // Impor komponen Popup
+import Popup from "../components/Popup";
 
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
