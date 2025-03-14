@@ -22,14 +22,9 @@ const Popup: React.FC = () => {
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm text-center flex flex-col items-center">
         <h2 className="text-xl font-bold mb-4">Pemberitahuan</h2>
         <p className="mb-4 text-sm leading-relaxed">
-          Berikut adalah akun untuk akses Admin Dashboard. <br />
+          Berikut adalah akun untuk akses Admin Dashboard. <br /> <br />
           <strong>Email:</strong> admin@gmail.com <br />
-          <strong>Password:</strong> admin
-          <br /><br /> ------- <br /><br />
-          Untuk akses UI Dashboarb bisa akses dengan akun dibawah atau bisa buat akun baru <br />
-          <strong>Email:</strong> newuser123@gmail.com <br />
-          <strong>Password:</strong> 123456789 <br />
-          <br />
+          <strong>Password:</strong> admin <br />
           <span className="text-gray-500 text-xs block mt-2">
             *Pop-up ini hanya muncul sekali saja, jadi mohon diingat.
           </span>
