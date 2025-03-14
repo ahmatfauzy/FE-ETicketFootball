@@ -41,6 +41,7 @@ export const LoginForm = () => {
     <div className="fixed inset-0 overflow-hidden">
       {/* Popup akan muncul di sini */}
       <Popup />
+      <Popup/>
 
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

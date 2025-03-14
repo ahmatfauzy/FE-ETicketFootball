@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const Popup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const isPopupClosed = localStorage.getItem('popupClosed');
-    if (isPopupClosed !== 'true') {
+    const isPopupClosed = localStorage.getItem("popupClosed");
+    if (isPopupClosed !== "true") {
       setIsVisible(true);
     }
   }, []);
 
   const handleClose = () => {
     setIsVisible(false);
-    localStorage.setItem('popupClosed', 'true');
+    localStorage.setItem("popupClosed", "true");
   };
 
   if (!isVisible) return null;
@@ -22,9 +22,14 @@ const Popup: React.FC = () => {
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm text-center flex flex-col items-center">
         <h2 className="text-xl font-bold mb-4">Pemberitahuan</h2>
         <p className="mb-4 text-sm leading-relaxed">
-          Berikut adalah akun untuk akses Admin Dashboard. <br /> <br />
+          Berikut adalah akun untuk akses Admin Dashboard. <br />
           <strong>Email:</strong> admin@gmail.com <br />
-          <strong>Password:</strong> admin <br />
+          <strong>Password:</strong> admin
+          <br /><br /> ------- <br /><br />
+          Untuk akses UI Dashboarb bisa akses dengan akun dibawah atau bisa buat akun baru <br />
+          <strong>Email:</strong> newuser123@gmail.com <br />
+          <strong>Password:</strong> 123456789 <br />
+          <br />
           <span className="text-gray-500 text-xs block mt-2">
             *Pop-up ini hanya muncul sekali saja, jadi mohon diingat.
           </span>
