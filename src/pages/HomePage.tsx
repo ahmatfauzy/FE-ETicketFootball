@@ -4,6 +4,7 @@ import heroImage from "../assets/images/hero.png";
 import Navbar from "../components/Navbar";
 import Accordion from "../components/Accordion";
 import Contact from "../components/Contact";
+import { FaFutbol } from "react-icons/fa";
 
 interface FeatureCardProps {
   title: string;
@@ -52,8 +53,8 @@ const HomePage: React.FC = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="bg-gray-900 text-white pt-2">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div className="min-h-screen flex items-start mt-7 bg-gray-900 text-white">
+        <div className="container mx-auto  flex flex-col md:flex-row items-center">
           <div className="md:w-2/5 mb-6 md:mb-0 pt-4">
             <div className="text-blue-400 font-bold mb-2">
               THE BEST ETICKET PROVIDERS AROUND THE WORLD
@@ -74,6 +75,20 @@ const HomePage: React.FC = () => {
           </div>
           <div className="md:w-3/5 md:pl-16 flex justify-end">
             <div className="relative">
+              <div className="absolute -top-6 -left-8 text-4xl text-white opacity-50">
+                <FaFutbol />
+              </div>
+
+              {/* Ikon Bola 2 */}
+              <div className="absolute -bottom-8 -right-6 text-4xl text-white opacity-50">
+                <FaFutbol />
+              </div>
+
+              {/* Ikon Bola 3
+              <div className="absolute -bottom-0 -left-4 text-4xl text-white opacity-50">
+                <FaFutbol />
+              </div> */}
+
               <img
                 src={heroImage}
                 alt="Football fan with smartphone"
@@ -84,8 +99,8 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Features Section - Styled to match hero section */}
-      <div className="bg-gray-900 mt-3 py-14 px-4">
+      {/* Features Section */}
+      <div className="bg-gray-900 py-12 px-4 -mt-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-8 text-white">
             Mengapa Memilih Kami?
@@ -107,7 +122,7 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Accordion Section - Styled to match hero section */}
+      {/* Accordion Section */}
       <div className="bg-gray-800 py-12 px-4">
         <div className="container mx-auto">
           <h1 className="text-2xl font-bold mb-8 text-white text-center">
@@ -117,11 +132,11 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* COntact */}
+      {/* Contact */}
       <Contact />
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-6 border-t border-gray-600">
+      <footer className="bg-gray-800 text-white py-6 border-t border-gray-600 mt-auto">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center">
             <p>&copy; 2025 FootieGate.</p>
