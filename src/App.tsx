@@ -12,19 +12,18 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 
 // dashboard admin
 import Sidebar from "./components/Sidebar";
-// import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/admin/Dashboard";
 import MatchList from "./pages/admin/matches/MatchList";
 import MatchForm from "./pages/admin/matches/MatchForm";
 import TicketList from "./pages/admin/tickets/TicketList";
 import TicketForm from "./pages/admin/tickets/TicketForm";
+import ErrorPage from "./components/ErrorPage";
 
 // user
 import HomePage from "./pages/HomePage";
 import MatchListPage from "./pages/MatchListPage";
 import MyTicketsPage from "./pages/MyTicketsPage";
 import UserTicketForm from "./pages/TicketForm";
-// import MyTicketsPage from "./pages/MyTicketsPage";
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -42,6 +41,7 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
+          <Route path="*" element={<ErrorPage />} />
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -132,6 +132,7 @@ function App() {
             }
           />
 
+          {/* User */}
           <Route path="/homepage" element={<HomePage />} />
 
           <Route path="/matches/user" element={<MatchListPage />} />
